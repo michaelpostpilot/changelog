@@ -50,7 +50,7 @@ const EntryItem = ({ entry, onUpdate, onDelete }) => {
         </h3>
         {entry.edited && (
           <span className="text-sm italic text-gray-400">
-            (Edited: {formatDate(entry.lastEdited)})
+            (Edited: {formatDate(entry.last_edited)})
           </span>
         )}
       </div>
