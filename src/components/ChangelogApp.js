@@ -50,16 +50,24 @@ const ChangelogApp = () => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full max-w-3xl mx-auto p-6 bg-gray-50 min-h-screen">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8">Weekly Changelog</h1>
+    <div className="flex flex-col items-center w-full max-w-4xl mx-auto p-8 bg-white min-h-screen">
+      <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
+        Weekly AI Tips & Best Practices
+      </h1>
       
-      <EntryForm onAddEntry={addEntry} />
+      <div className="w-full bg-white rounded-lg shadow-lg p-6 mb-8">
+        <h2 className="text-xl font-semibold text-gray-700 mb-4">Add New Update</h2>
+        <EntryForm onAddEntry={addEntry} />
+      </div>
       
-      <EntryList 
-        entries={entries} 
-        onUpdateEntry={updateEntry} 
-        onDeleteEntry={deleteEntry} 
-      />
+      <div className="w-full bg-white rounded-lg shadow-lg p-6">
+        <h2 className="text-xl font-semibold text-gray-700 mb-4">Updates History</h2>
+        <EntryList 
+          entries={entries} 
+          onUpdateEntry={updateEntry} 
+          onDeleteEntry={deleteEntry} 
+        />
+      </div>
     </div>
   );
 };
