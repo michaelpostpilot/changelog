@@ -20,6 +20,17 @@ const EntryItem = ({ entry, onUpdate, onDelete }) => {
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow duration-200">
+      <div className="flex justify-between items-center mb-4 border-b border-gray-100 pb-3">
+        <h3 className="text-lg font-semibold text-gray-700">
+          {formatDate(entry.timestamp)}
+        </h3>
+        {entry.edited && (
+          <span className="text-sm italic text-gray-400">
+            (Edited: {formatDate(entry.lastEdited)})
+          </span>
+        )}
+      </div>
+
       {isEditing ? (
         <div className="space-y-4">
           <textarea
@@ -46,40 +57,27 @@ const EntryItem = ({ entry, onUpdate, onDelete }) => {
           </div>
         </div>
       ) : (
-        <>
-          <div className="flex justify-between items-start">
-            <div className="flex-1">
-              <p className="text-gray-800 whitespace-pre-wrap leading-relaxed">{entry.text}</p>
-            </div>
-            <div className="flex space-x-3 ml-4">
-              <button
-                className="text-gray-400 hover:text-blue-600 transition-colors duration-200"
-                onClick={() => setIsEditing(true)}
-                title="Edit"
-              >
-                <Edit size={20} />
-              </button>
-              <button
-                className="text-gray-400 hover:text-red-600 transition-colors duration-200"
-                onClick={() => onDelete(entry.id)}
-                title="Delete"
-              >
-                <Trash2 size={20} />
-              </button>
-            </div>
+        <div className="flex justify-between items-start">
+          <div className="flex-1">
+            <p className="text-gray-800 whitespace-pre-wrap leading-relaxed">{entry.text}</p>
           </div>
-          
-          <div className="mt-4 text-sm text-gray-500 flex items-center justify-between border-t border-gray-100 pt-4">
-            <span className="flex items-center">
-              Posted: {formatDate(entry.timestamp)}
-            </span>
-            {entry.edited && (
-              <span className="italic text-gray-400">
-                (Edited: {formatDate(entry.lastEdited)})
-              </span>
-            )}
+          <div className="flex space-x-3 ml-4">
+            <button
+              className="text-gray-400 hover:text-blue-600 transition-colors duration-200"
+              onClick={() => setIsEditing(true)}
+              title="Edit"
+            >
+              <Edit size={20} />
+            </button>
+            <button
+              className="text-gray-400 hover:text-red-600 transition-colors duration-200"
+              onClick={() => onDelete(entry.id)}
+              title="Delete"
+            >
+              <Trash2 size={20} />
+            </button>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
