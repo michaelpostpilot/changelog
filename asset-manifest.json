@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/changelog/static/css/main.910453bf.css",
+    "main.js": "/changelog/static/js/main.6bd2bf60.js",
+    "index.html": "/changelog/index.html",
+    "main.910453bf.css.map": "/changelog/static/css/main.910453bf.css.map",
+    "main.6bd2bf60.js.map": "/changelog/static/js/main.6bd2bf60.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.910453bf.css",
+    "static/js/main.6bd2bf60.js"
+  ]
+}
