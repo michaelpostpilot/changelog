@@ -1,0 +1,24 @@
+# Changelog App Project Structure
+
+```
+changelog-app/
+├── public/
+│   ├── index.html
+│   ├── favicon.ico
+│   └── manifest.json
+├── src/
+│   ├── components/
+│   │   ├── ChangelogApp.jsx
+│   │   ├── EntryForm.jsx
+│   │   ├── EntryList.jsx
+│   │   └── EntryItem.jsx
+│   ├── styles/
+│   │   └── index.css
+│   ├── utils/
+│   │   └── dateFormatter.js
+│   ├── App.jsx
+│   ├── index.jsx
+│   └── index.css
+├── package.json
+└── README.md
+```
