@@ -18,6 +18,30 @@ const EntryItem = ({ entry, onUpdate, onDelete }) => {
     setIsEditing(false);
   };
 
+  const renderTextWithLinks = (text) => {
+    // URL regex pattern that matches http, https, and x.com links
+    const urlRegex = /(https?:\/\/[^\s]+)|((?:https?:\/\/)?x\.com\/\S+)/g;
+    const parts = text.split(urlRegex);
+    
+    return parts.map((part, index) => {
+      if (!part) return null;
+      if (urlRegex.test(part)) {
+        return (
+          <a
+            key={index}
+            href={part.startsWith('http') ? part : `https://${part}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-800 hover:underline"
+          >
+            {part}
+          </a>
+        );
+      }
+      return <span key={index}>{part}</span>;
+    });
+  };
+
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow duration-200">
       <div className="flex justify-between items-center mb-4 border-b border-gray-100 pb-3">
@@ -59,7 +83,9 @@ const EntryItem = ({ entry, onUpdate, onDelete }) => {
       ) : (
         <div className="flex justify-between items-start">
           <div className="flex-1">
-            <p className="text-gray-800 whitespace-pre-wrap leading-relaxed">{entry.text}</p>
+            <p className="text-gray-800 whitespace-pre-wrap leading-relaxed">
+              {renderTextWithLinks(entry.text)}
+            </p>
           </div>
           <div className="flex space-x-3 ml-4">
             <button
